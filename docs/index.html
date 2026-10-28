@@ -22,7 +22,7 @@
   "applicationCategory": "CommunicationApplication",
   "operatingSystem": "Windows, macOS, Linux, Android",
   "description": "Local-first, peer-to-peer encrypted chat app for desktop and Android. No cloud, no signup, no central server.",
-  "softwareVersion": "0.9.0-beta",
+  "softwareVersion": "1.0.0",
   "license": "https://opensource.org/licenses/MIT",
   "codeRepository": "https://github.com/D4niel-dev/Orbit-beta",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -65,13 +65,33 @@
       </a>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#preview" class="nav-link">Preview</a></li>
-        <li><a href="#features" class="nav-link">Features</a></li>
-        <li><a href="#how-it-works" class="nav-link">How it works</a></li>
-        <li><a href="#security" class="nav-link">Security</a></li>
-        <li><a href="#tech" class="nav-link">Tech</a></li>
+        <!-- ⚠ EIGHT FLAT LINKS IS A LIST YOU HAVE TO READ; THREE ITEMS IS ONE YOU CAN SCAN.
+             Grouped by what a visitor is asking — what it is, whether it is safe, and the
+             questions people actually send — with Download kept out of the list because it
+             is already the button on the right. -->
+        <li class="nav-group">
+          <button type="button" class="nav-link nav-trigger" aria-expanded="false" aria-haspopup="true">
+            Product
+            <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <ul class="nav-menu">
+            <li><a href="#preview" class="nav-link">Preview</a></li>
+            <li><a href="#features" class="nav-link">Features</a></li>
+            <li><a href="#new-in-1-0" class="nav-link">New in 1.0</a></li>
+            <li><a href="#how-it-works" class="nav-link">How it works</a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button type="button" class="nav-link nav-trigger" aria-expanded="false" aria-haspopup="true">
+            Security
+            <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <ul class="nav-menu">
+            <li><a href="#security" class="nav-link">What it protects</a></li>
+            <li><a href="#tech" class="nav-link">Tech</a></li>
+          </ul>
+        </li>
         <li><a href="#faq" class="nav-link">FAQ</a></li>
-        <li><a href="#download" class="nav-link">Download</a></li>
         <li class="nav-mobile-extra">
           <div class="theme-switch" role="group" aria-label="Colour theme">
             <button type="button" data-theme-set="light" aria-pressed="false" title="Light theme" aria-label="Light theme">
@@ -124,6 +144,28 @@
       <div class="orb orb-1"></div>
       <div class="orb orb-2"></div>
 
+
+      <!-- ⚠ FOUR PEOPLE, TWO PER SIDE, OVERLAPPING. One face per side read as a portrait;
+           a pair reads as a room. The back one is smaller and dimmer so the two make
+           depth instead of a lineup — and both are radially masked, so where they overlap
+           the edges dissolve into each other rather than cutting.
+           ⚠ `src` is assigned by the script at the end of the page, which also decides
+           which of the two is in front, so the hero differs on every refresh. -->
+      <div class="hero-people hero-people--left" aria-hidden="true">
+        <img class="hero-person hero-person--far" alt="" decoding="async">
+        <img class="hero-person hero-person--near" alt="" decoding="async">
+      </div>
+      <div class="hero-people hero-people--right" aria-hidden="true">
+        <img class="hero-person hero-person--far" alt="" decoding="async">
+        <img class="hero-person hero-person--near" alt="" decoding="async">
+      </div>
+
+      <!-- The planet behind everything, deliberately oversized: at this scale the ring
+           runs past both edges and the hero reads as a place rather than a page. It is
+           the same render as the statement band further down — one brand object, used at
+           two scales, not two planets. -->
+      <img class="hero-planet" src="images/objects/planet.webp" alt="" aria-hidden="true" decoding="async">
+
       <div class="container">
         <div class="hero-copy fade-up">
           <div class="eyebrow">
@@ -136,7 +178,7 @@
             <span class="hero-line hero-line-r grad">No internet required.</span>
           </h1>
           <p>
-            Orbit connects devices on your local network — peer-to-peer, end-to-end encrypted, no cloud account. Chat, share files, make calls, and stay in control of your conversations.
+            Orbit connects your devices directly — peer-to-peer, end-to-end encrypted, no account and no cloud. Chat, share files and make calls on your own network; when a friend is somewhere else, the desktop can reach them through a relay that introduces the two of you and never sees a message.
           </p>
           <div class="hero-cta-row">
             <a href="#download" class="btn btn-primary">
@@ -160,6 +202,19 @@
         </div>
 
         <div class="hero-visual fade-up">
+          <!-- ⚠ THE RING IS BEHIND THE WINDOW AND IS NOT CLIPPED TO IT. The window is
+               opaque, so it hides the crossing point itself — which is physically correct
+               (the ring passes behind the device) and needs no clip path at all. The two
+               nodes sit on the ellipse's own ends, at the angle its rotation puts them. -->
+          <div class="hero-orbit" aria-hidden="true">
+            <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid meet">
+              <g class="ho-drift">
+                <ellipse class="ho-ring" cx="600" cy="300" rx="560" ry="150" transform="rotate(-8 600 300)"/>
+                <circle class="ho-node" cx="46" cy="378" r="5"/>
+                <circle class="ho-node" cx="1154" cy="222" r="5"/>
+              </g>
+            </svg>
+          </div>
           <div class="window" data-parallax="0.045">
             <div class="window-bar">
               <div class="window-dots" aria-hidden="true">
@@ -383,9 +438,15 @@
          reference uses these to break up its feature grid, and it works because
          the sentence does the selling rather than a diagram. -->
     <section class="statement reveal" aria-label="How Orbit is different">
-      <div class="statement-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-      </div>
+      <!-- ⚠ THE RING PASSES BEHIND THE CORE AT THE TOP AND IN FRONT AT THE BOTTOM.
+           That one detail is what makes this read as a sphere in orbit rather than a
+           circle with an oval on it, and it is why this is SVG: two ellipses and a
+           clip path do it exactly at any size. -->
+      <!-- A rendered object rather than a drawing: at this size the specular highlights
+           and the glass rim are what make it read as a physical thing, and no SVG filter
+           reproduces them convincingly. -->
+      <img class="orbit-object" src="images/objects/planet.webp" width="1024" height="1024"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
       <p>Your message goes from your device to theirs. <span class="hl">There is nothing in between.</span></p>
     </section>
 
@@ -393,8 +454,8 @@
       <div class="container">
         <div class="section-header fade-up">
           <span class="section-kicker">Features</span>
-          <h2>Most messengers ask you to trust their server.<br>Orbit does not have one.</h2>
-          <p>That one decision is what the rest of this page is about: what it lets Orbit promise, and what it costs.</p>
+          <h2>Most messengers ask you to trust their server.<br>Orbit&rsquo;s never sees a message.</h2>
+          <p>That one decision is what the rest of this page is about: what it lets Orbit promise, and what it costs. On your own network nothing is relayed at all; across the internet a relay carries the introductions &mdash; and only the introductions.</p>
         </div>
 
         <div class="pillars">
@@ -591,14 +652,66 @@
       <div class="kinetic-track">
         <span class="kinetic-word fill">NO CLOUD</span>
         <span class="kinetic-word">LOCAL FIRST</span>
-        <span class="kinetic-word fill">NO RELAY</span>
+        <span class="kinetic-word fill">RELAY SEES NO CONTENT</span>
         <span class="kinetic-word">YOUR DEVICES</span>
         <span class="kinetic-word fill">NO CLOUD</span>
         <span class="kinetic-word">LOCAL FIRST</span>
-        <span class="kinetic-word fill">NO RELAY</span>
+        <span class="kinetic-word fill">RELAY SEES NO CONTENT</span>
         <span class="kinetic-word">YOUR DEVICES</span>
       </div>
     </div>
+
+    <!-- ── New in 1.0 ──────────────────────────────────────────────────────
+         ⚠ This section exists because 1.0 added four things nothing else on this page
+         describes: reaching a friend outside your network, the web of trust, hash-based
+         content filtering, and notifications that expire. It reuses .security-grid so
+         the cards are the site's own, not a fourth card style. -->
+    <section class="section" id="new-in-1-0">
+      <div class="container">
+        <div class="section-header fade-up">
+          <span class="section-kicker">New in 1.0</span>
+          <h2>Four things the release added</h2>
+          <p class="section-sub">Each one is written the way it actually behaves &mdash; including the parts that are smaller than they sound.</p>
+        </div>
+
+        <div class="security-grid">
+          <article class="security-card fade-up">
+            <h3><span class="security-dot security-dot--on" aria-hidden="true"></span>Reaching a friend who is not on your Wi-Fi</h3>
+            <ul>
+              <li>Your own network is still plain peer-to-peer with no server in it at all. When there is no local route, the same packet travels over a direct WebRTC connection instead.</li>
+              <li>The relay that introduces two peers sees session descriptions and network addresses &mdash; never a message, a file or a name.</li>
+              <li><strong>Desktop only for now.</strong> The phone still reaches friends on the same network.</li>
+            </ul>
+          </article>
+
+          <article class="security-card fade-up">
+            <h3><span class="security-dot security-dot--on" aria-hidden="true"></span>A web of trust, not a ban button</h3>
+            <ul>
+              <li>Reporting a peer signs a statement with your identity key and sends it to the contacts who have exchanged keys with you.</li>
+              <li>Reports travel one hop, expire, and are rate-limited per peer &mdash; a flood cannot pass for a consensus.</li>
+              <li><strong>Nothing is ever blocked automatically.</strong> A verified report is shown to you, with the reporter named, and you decide.</li>
+            </ul>
+          </article>
+
+          <article class="security-card fade-up">
+            <h3><span class="security-dot security-dot--on" aria-hidden="true"></span>Content you can hide</h3>
+            <ul>
+              <li>Report an image and its SHA-256 goes on a list kept on your device. Those exact bytes are hidden wherever they appear.</li>
+              <li><strong>Exact copies only</strong> &mdash; re-encoding a file changes the hash completely. It is a filter, not a detector.</li>
+              <li>There is always a <em>Show anyway</em>, and using it does not unflag anything else.</li>
+            </ul>
+          </article>
+
+          <article class="security-card fade-up">
+            <h3><span class="security-dot security-dot--on" aria-hidden="true"></span>Notifications that close themselves</h3>
+            <ul>
+              <li>Messages and mentions expire after 30 minutes, calls after an hour, updates and results after ten.</li>
+              <li>The exception is the replyable notification: a reply typed with Orbit closed is waiting in it, and expiring it would drop your reply silently.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="how-it-works">
       <img class="section-bg" src="images/hero/hero-keyB.png" alt="" aria-hidden="true" loading="lazy" width="1672" height="941">
@@ -627,7 +740,7 @@
           <li class="walkthrough-step">
             <div class="walkthrough-num" aria-hidden="true">02</div>
             <h3>Put both devices on the same network</h3>
-            <p>Connect to the same Wi-Fi or LAN. Orbit finds nearby clients automatically — no IP entry or account setup required.</p>
+            <p>Connect to the same Wi-Fi or LAN. Orbit finds nearby clients automatically &mdash; no IP entry or account setup required. If a friend is on a different network, the desktop can reach them with a pairing code instead.</p>
           </li>
           <li class="walkthrough-step">
             <div class="walkthrough-num" aria-hidden="true">03</div>
@@ -716,7 +829,8 @@
             <h3><span class="security-dot security-dot--off" aria-hidden="true"></span>Not covered yet</h3>
             <ul>
               <li><strong>No key-change warning.</strong> Keys are pinned when you pair, but Orbit does not warn you if a peer&rsquo;s key later changes, and there is no fingerprint to compare out of band. For an app built on end-to-end encryption that is a real gap &mdash; it is the next thing on the list.</li>
-              <li><strong>Local networks only.</strong> Peers must be reachable on the same network; there is no NAT traversal and no relay, so this is not a drop-in replacement for a cloud messenger.</li>
+              <li><strong>Internet connections are desktop-only, and need infrastructure you host.</strong> The desktop can now reach a peer outside your network over a direct peer-to-peer connection, but it still needs a signalling relay and STUN (and TURN for symmetric NAT) that you run yourself &mdash; this build ships none. The phone reaches friends on the same network only.</li>
+              <li><strong>The relay sees metadata, never content.</strong> It carries session descriptions and network candidates to introduce two peers, so it learns which two addresses are pairing and when. It never sees a message, a file or a name: encryption sits above the transport, which is also why a stolen pairing code is a denial of service rather than a disclosure &mdash; an impostor in the room holds no keys.</li>
               <li><strong>Translate and GIF search are not encrypted.</strong> Both are optional and user-initiated, but the text leaves your device in plaintext.</li>
               <li><strong>Calls are local-network only</strong>, and group calls are desktop-only.</li>
               <li><strong>Installers are unsigned</strong> beta builds, so Windows SmartScreen warnings are expected. The signed checksums below are how you tell a real build from a tampered one.</li>
@@ -747,9 +861,11 @@ sha256sum --check SHA256SUMS.txt --ignore-missing</code></pre>
          are never adjacent — a quiet card only reads as quiet next to something
          that is not. -->
     <section class="statement reveal" aria-label="What Orbit asks of you">
-      <div class="statement-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
+      <!-- ⚠ The shield earns its place here, where the sentence is about trust rather
+           than decoration beside a heading. Sized small and centred like the line icon it
+           replaces, so it reads as an emblem, not an illustration. -->
+      <img class="statement-shield" src="images/objects/shield-obj.webp"
+           alt="" aria-hidden="true" loading="lazy" decoding="async">
       <p>There is no account to create and nothing to sign into. <span class="hl">The two devices are the whole system.</span></p>
     </section>
 
@@ -787,7 +903,11 @@ sha256sum --check SHA256SUMS.txt --ignore-missing</code></pre>
           </details>
           <details class="faq-item">
             <summary>Can I use Orbit over the internet?</summary>
-            <p>Orbit is designed for local networks first. Devices need a route to reach each other; over the internet that typically means the same VPN or LAN, not a public server.</p>
+            <p>Yes, on the desktop, as of 1.0 &mdash; with two caveats. On the same network Orbit needs nothing else at all. When the other device is somewhere else, the desktop opens a direct peer-to-peer connection arranged by a signalling relay: you pick the friend, share a short pairing code, and both sides type it. The connection is still between the two machines; the relay only introduces them. The phone does not do this yet, and reaching two different home networks needs a relay you host yourself &mdash; Orbit ships no servers.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What does the relay see?</summary>
+            <p>Session descriptions and network candidates &mdash; the information two peers need to find each other &mdash; plus which two addresses are pairing and when. It never sees a message, a file, a name or a key, because encryption happens before the transport and the relay is not a transport. That is also why a stolen pairing code is a denial of service rather than a disclosure: whoever takes the second seat holds no keys.</p>
           </details>
           <details class="faq-item">
             <summary>Is Orbit open source?</summary>
@@ -862,7 +982,7 @@ sha256sum --check SHA256SUMS.txt --ignore-missing</code></pre>
         <a class="btn btn-primary download-mobile-cta" href="https://github.com/D4niel-dev/Orbit-beta/releases" target="_blank" rel="noopener noreferrer">Get Orbit — all platforms on GitHub</a>
 
         <div class="download-sub fade-up">
-          <p>All builds on <a href="https://github.com/D4niel-dev/Orbit-beta/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a> · GPG-signed SHA256SUMS published with every release; installers are unsigned beta builds.</p>
+          <p>All builds on <a href="https://github.com/D4niel-dev/Orbit-beta/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a> · GPG-signed SHA256SUMS published with every release; installers are unsigned builds, so Windows SmartScreen warnings are expected.</p>
           <p>Windows SmartScreen may show an "unknown publisher" warning — expected for new open-source apps. More info → Run anyway.</p>
           <p>Verify downloads against the GPG-signed SHA256SUMS in the release. Your keys never leave your devices.</p>
           <p>You need two devices on the same Wi-Fi to try it. See the <a href="#faq">FAQ</a>.</p>
@@ -959,7 +1079,7 @@ sha256sum --check SHA256SUMS.txt --ignore-missing</code></pre>
         if (dir > 0) nextMobileSlide(); else prevMobileSlide();
       };
 
-      var ORBIT_VERSION = 'v0.9.0-beta';
+      var ORBIT_VERSION = 'v1.0.0';
       document.querySelectorAll('[data-version]').forEach(function (el) {
         el.textContent = ORBIT_VERSION;
       });
@@ -1040,7 +1160,7 @@ sha256sum --check SHA256SUMS.txt --ignore-missing</code></pre>
         var html =
           '<div class="announcement-bar" role="status">' +
             '<div class="announcement-bar-inner">' +
-              '<span class="announcement-text">New: Orbit v0.9.0-beta — a new look for the desktop: a nav rail that collapses to icons, one corner radius and one shadow across every panel, and a rebuilt settings modal, gallery, call screen and profile sidebar. It is a beta you switch on, with the original UI still the default. The emoji picker is Orbit’s own now — it hangs off the message box instead of floating over the window, and its dataset ships with the app, so a fresh install has emoji with no network.</span>' +
+              '<span class="announcement-text">New: Orbit v1.0.0 — friends outside your network. The local path is still plain TCP with no server anywhere; when there is no local route, the same packet travels over a direct peer-to-peer connection instead, arranged with a pairing code the two of you share. Plus a web of trust: signed reports that expire and are rate-limited, shown to you rather than blocked for you. Internet connections are desktop-only in this release.</span>' +
               '<a class="announcement-link" href="https://github.com/D4niel-dev/Orbit-beta/blob/main/CHANGELOG.md" target="_blank" rel="noopener">What\'s new &rarr;</a>' +
               '<button type="button" class="announcement-close" aria-label="Dismiss announcement">✕</button>' +
             '</div>' +
@@ -1584,5 +1704,31 @@ sha256sum --check SHA256SUMS.txt --ignore-missing</code></pre>
   <!-- Motion layer. After the page's own script, so it decorates a page that is
        already wired rather than competing with it. -->
   <script src="motion.js"></script>
+
+  <script>
+    // ⚠ A DELIBERATE SMALL UX TOUCH: four people are always shown, but which face is in
+    // front changes on every refresh — so the hero is never quite the same twice without
+    // ever being empty or mid-swap. `src` is assigned here, before first paint.
+    (function () {
+      function shuffle(a) {
+        for (var i = a.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+        return a;
+      }
+      [['left', 'right'], ['right', 'left']].forEach(function (pair) {
+        var slot = pair[0], dir = pair[1];
+        var files = shuffle([
+          'images/people/happy-' + dir + '-1.webp',
+          'images/people/happy-' + dir + '-2.webp'
+        ]);
+        var near = document.querySelector('.hero-people--' + slot + ' .hero-person--near');
+        var far = document.querySelector('.hero-people--' + slot + ' .hero-person--far');
+        if (near) near.src = files[0];
+        if (far) far.src = files[1];
+      });
+    })();
+  </script>
 </body>
 </html>

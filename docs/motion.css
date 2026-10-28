@@ -236,11 +236,19 @@
   letter-spacing: -0.03em;
   line-height: 1;
   padding-right: 0.32em;
-  /* Outlined rather than filled: the type is a texture here, not a headline, and
-     a solid block of it would compete with the section it introduces. */
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--text-3);
-  opacity: 0.5;
+  /* ⚠⚠ THE OUTLINE WAS REMOVED, AND NOT BECAUSE IT LOOKED WRONG — BECAUSE IT WAS WRONG.
+     `-webkit-text-stroke` centres the stroke ON the glyph outline. At 116px with
+     `letter-spacing: -0.03em` (about -3.5px) the outlines of adjacent letters grow into
+     each other, and the counters of O and R close up. What Dan saw as "lines overlapping
+     each other" was exactly that: two letter outlines colliding, not a thin line.
+     Thickening the stroke made it worse, which is why the second attempt still looked
+     broken.
+     A ghost fill has none of those failure modes at any size, keeps the solid/soft
+     rhythm the band needs, and follows the theme because it is the text colour at low
+     opacity rather than a fixed grey. */
+  color: var(--text);
+  -webkit-text-stroke: 0;
+  opacity: 0.14;
 }
 .kinetic-word.fill {
   color: var(--text);
